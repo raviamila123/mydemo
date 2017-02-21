@@ -1,0 +1,79 @@
+<Page x:Class="InventoryMgmt.FirmPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300" KeyDown="Page_KeyDown_1"
+      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+	Title="FirmPage" Loaded="Page_Loaded_1">
+
+    <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="-148.636,0,-937.5,-290.712">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1354*"/>
+            <ColumnDefinition Width="41*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="465" Margin="208.993,70,0,0" Stroke="Black" VerticalAlignment="Top" Width="1136.404"/>
+        <DataGrid TabIndex="15" x:Name="grid_firm" HorizontalAlignment="Left" Height="349" Margin="637,102,0,0" AutoGenerateColumns="False" VerticalAlignment="Top" Foreground="#FFA80E0E" SelectionChanged="grid_firm_SelectionChanged" CanUserAddRows="False" BorderThickness="1" PreviewKeyDown="grid_firm_PreviewKeyDown_1" Width="708.397">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding firm_name}"  Header="name" SortMemberPath="id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding firm_email}"  Header="Email" SortMemberPath="id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding firm_contact}"  Header="contact" SortMemberPath="id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding firm_bankaccount}"  Header="Bank Name" SortMemberPath="id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding firm_bankname}"  Header="Bank Account" SortMemberPath="id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding firm_address}"  Header="Address" SortMemberPath="id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding firm_terms_and_condition}" Header="Terms And Condition" SortMemberPath="id" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="btnGridDelete_Click_1" x:Name="btnGridDelete" Tag="{Binding id}" Style="{DynamicResource AccentedSquareButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Width="10" Height="10">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill"/>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <TextBlock Text="Delete"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="459" Margin="208.993,76,0,0" Stroke="Black" VerticalAlignment="Top" Width="428.007"/>
+        <Label Content="FIRM INFORMATION" HorizontalAlignment="Left" Margin="173.007,11.076,0,0" VerticalAlignment="Top" Width="235" Foreground="#CC00ABA9" FontSize="24"/>
+        <Separator Height="18.001" Margin="10,52.999,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="440" RenderTransformOrigin="0.498,0.204"/>
+        <Button TabIndex="10" Click="btnNew_Click_1" x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="516,487,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource AccentedSquareButtonStyle}" BorderBrush="#FF77CBC7" FontWeight="Bold" Height="28"/>
+
+        <TextBox x:Name="txtfirmname" HorizontalAlignment="Left" Height="26" Margin="369.5,110.01,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221.5" BorderBrush="#CC00ABA9" SelectionBrush="#CC00ABA9" TabIndex="0" RenderTransformOrigin="0.457,0.612" TextChanged="txtfirmname_TextChanged"/>
+
+        <TextBox x:Name="txtaddress" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="242" BorderBrush="#CC00ABA9" TextWrapping="Wrap" TabIndex="6" Margin="369.5,313.04,0,0"/>
+
+        <TextBox x:Name="txtfirmemail" HorizontalAlignment="Left" Height="26" Margin="369.5,144.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221.5" SelectionBrush="#CC00ABA9" BorderBrush="#CC00ABA9" TabIndex="2"/>
+
+        <TextBox x:Name="txtfirmcontact" HorizontalAlignment="Left" Height="26" Margin="369.5,175.05,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221.5" BorderBrush="#CC00ABA9" TabIndex="2"/>
+        <Button TabIndex="9" x:Name="btnsave" Content="Save (CTRL+S)" HorizontalAlignment="Left"  Margin="388,487,0,0" VerticalAlignment="Top" Width="92" Style="{StaticResource AccentedSquareButtonStyle}" BorderBrush="#FF77CBC7" FontWeight="Bold" Height="28" Click="btnsave_Click"/>
+        <Image HorizontalAlignment="Left" Height="47" Margin="1,6,0,0" VerticalAlignment="Top" Width="62" Source="images/company.png" />
+        <Separator HorizontalAlignment="Stretch" Height="12" Margin="450,53,10,0" VerticalAlignment="Top" />
+        <Image HorizontalAlignment="Left" Height="47" Margin="0,10,0,0" VerticalAlignment="Top" Width="62" Source="images/search.png" />
+
+        <TextBox TabIndex="14" x:Name="text_search" Height="32" Margin="637,70,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="#CC00ABA9" TextChanged="TextBox_TextChanged_1" ToolTip="Search" Width="708.397"/>
+        <Label x:Name="firmerror" Content="" HorizontalAlignment="Left" Margin="3,39,0,0" VerticalAlignment="Top" Width="417" Background="#FFFFDCDC" Visibility="Hidden" Height="26"/>
+        <Button TabIndex="8" x:Name="btnlogin" Content="Login" Margin="287,487,0,0" VerticalAlignment="Top"  Style="{StaticResource AccentedSquareButtonStyle}" BorderBrush="#FF77CBC7" FontWeight="Bold" HorizontalAlignment="Left" Width="75" Click="btnlogin_Click" Height="28"/>
+
+        <TextBox TabIndex="7" x:Name="txtTermsAndCondition" HorizontalAlignment="Left" Height="45" Margin="352.5,406,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="259"/>
+
+        <TextBox x:Name="txtfirmbankname" HorizontalAlignment="Left" Height="17.04" Margin="369.5,219.01,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221.5" RenderTransformOrigin="0.507,-0.275" TabIndex="3"/>
+
+        <TextBox x:Name="txtfirmccount" HorizontalAlignment="Left" Height="25.96" Margin="369.5,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221.5" TabIndex="5" d:LayoutOverrides="VerticalAlignment"/>
+        <Label x:Name="lblaccount" Content="Account Number" HorizontalAlignment="Left" Margin="240.777,259.04,0,0" VerticalAlignment="Top" Width="103" FontWeight="Bold" d:LayoutOverrides="VerticalAlignment"/>
+        <Label x:Name="lblbankname" Content="Bnak Nmae" HorizontalAlignment="Left" Margin="248.054,219.01,0,0" VerticalAlignment="Top" Width="95.723" FontWeight="Bold"/>
+        <Label x:Name="lbltumcondtions" Content="Terms &amp; Conditions" HorizontalAlignment="Left" Margin="88.723,365.04,0,385.212" Width="120.27" d:LayoutOverrides="Height"/>
+        <Label x:Name="lblfirmsurch" Content="FIRM SEARCH RECORD" Margin="547.5,6,500.143,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+        <Label x:Name="lblfirmContact" Content="Firm Contact" HorizontalAlignment="Left" Margin="240.777,175.05,0,0" VerticalAlignment="Top" Width="112.993" FontWeight="Bold"/>
+        <Label x:Name="lblEmai" Content="Firm Email" HorizontalAlignment="Left" Margin="249.777,141.01,0,0" VerticalAlignment="Top" Height="26" Width="77.993" FontWeight="Bold"/>
+        <Label x:Name="lblfirmname" Content="Name Of Firm" HorizontalAlignment="Left" Margin="240.777,110.01,0,0" VerticalAlignment="Top" Width="103" FontWeight="Bold"/>
+        <Label x:Name="lbladress" Content="Adress" HorizontalAlignment="Left" Margin="265.784,323.08,0,0" VerticalAlignment="Top" Width="77.993" Height="25.96" FontWeight="Bold"/>
+    </Grid>
+</Page>
